@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="body">
+    <div class="container">
+        <header>
+            <nav class="navigation">
+                <ul class="navigation__list">
+                    <li class="navigation__link"><a href="Home">Home</a></li>
+                    <li class="navigation__link"><a href="#modal">Add Transaction</a></li>
+                    <li class="navigation__link"><a href="report.html">Report</a></li>
+                </ul>
+            </nav>
+            <form action="" class="search">
+                <button class="search__button">
+                    <svg class="search__icon">
+                        <use xlink:href="icon/sprite.svg#icon-search"></use>
+                    </svg>
+                </button>
+                <input type="text" class="search__input" placeholder="Search e.g. Transaction">
+            </form>
+
+            <div class="user-nav">
+                <div class="user-nav__icon-box">
+                    <svg class="user-nav__icon">
+                        <use xlink:href="icon/sprite.svg#icon-notifications_none"></use>
+                    </svg>
+                </div>
+
+                <div class="user-nav__user">
+                    <img src="img/Screenshot_9.jpg" alt="ladies" class="user-nav__user-photo">
+                </div>
+
+            </div>
+        </header>
+
+        <main class="dashboard">
+
+            <div class="dashboard__left">
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="balance">
+
+                    <div class="balance__bank">
+                        <p class="balance__bank__title">Bank</p>
+                        <p class="balance__bank__amount">$150.000</p>
+                    </div>
+
+                    <div class="balance_cash">
+                        <p class="balance__cash__title">cash</p>
+                        <p class="balance__cash__amount">$150.000</p>
+                    </div>
+
+                </div>
+                <div class="transactions">
+                    <h3 class="title-h3">daily Transactions</h3>
+
+                    <div class="card">
+                        <div class="card__icon card__icon--plus">
+                            &#8593;
+                        </div>
+                        <div class="card__detail">
+                            <p class="card__detail__name">Payroll</p>
+                            <p class="card__detail__date">4 oct 2019, 5:30 PM </p>
+                        </div>
+
+                        <div class="card__amount">
+                            +$120.000,-
+                        </div>
+                        <div class="card__cta">
+                            <svg class="card__cta__icon">
+                                <use xlink:href="icon/sprite.svg#icon-keyboard_arrow_right"></use>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="card__icon card__icon--minus">
+                            &darr;
+                        </div>
+                        <div class="card__detail">
+                            <p class="card__detail__name">Shopping</p>
+                            <p class="card__detail__date">4 oct 2019, 5:30 PM </p>
+                        </div>
+
+                        <div class="card__amount">
+                            -$120,-
+                        </div>
+                        <div class="card__cta">
+                            <svg class="card__cta__icon">
+                                <use xlink:href="icon/sprite.svg#icon-keyboard_arrow_right"></use>
+                            </svg>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card__icon card__icon--minus">
+                            &darr;
+                        </div>
+                        <div class="card__detail">
+                            <p class="card__detail__name">Shopping</p>
+                            <p class="card__detail__date">4 oct 2019, 5:30 PM </p>
+                        </div>
+
+                        <div class="card__amount">
+                            -$120,-
+                        </div>
+                        <div class="card__cta">
+                            <svg class="card__cta__icon">
+                                <use xlink:href="icon/sprite.svg#icon-keyboard_arrow_right"></use>
+                            </svg>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card__icon card__icon--minus">
+                            &darr;
+                        </div>
+                        <div class="card__detail">
+                            <p class="card__detail__name">Shopping</p>
+                            <p class="card__detail__date">4 oct 2019, 5:30 PM </p>
+                        </div>
+
+                        <div class="card__amount">
+                            -$120,-
+                        </div>
+                        <div class="card__cta">
+                            <svg class="card__cta__icon">
+                                <use xlink:href="icon/sprite.svg#icon-keyboard_arrow_right"></use>
+                            </svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard__right">
+                <h3 class="title-h3">reminder</h3>
+
+                <div class="card">
+                    <div class="card__icon card__icon reminder__icon">
+                        <svg class="card__icon--svg">
+                            <use xlink:href="icon/sprite.svg#icon-receipt"></use>
+                        </svg>
+                    </div>
+                    <div class="card__detail">
+                        <p class="card__detail__name">Payroll</p>
+                        <p class="card__detail__date">4 oct 2019, 5:30 PM </p>
+                    </div>
+
+                    <div class="card__amount">
+                        -$120,-
+                    </div>
+                    <div class="card__cta">
+                        <svg class="card__cta__icon">
+                            <use xlink:href="icon/sprite.svg#icon-keyboard_arrow_right"></use>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <!-- <svg class="icon-home">
+        <use xlink:href="icon/sprite.svg#icon-keyboard_arrow_right"></use>
+    </svg> -->
+
+    <div class="modal" id="modal">
+        <div class="modal__container">
+            <div class="modal__close">
+                <a href="#body">&times;</a>
+            </div>
+            <div class="modal__content">
+
+                <form action="">
+                    <div class="input_group">
+                        <label for="" class="input__label">Date</label>
+                        <input type="date" class="input__value">
+                    </div>
+                    <div class="input_group">
+                        <label for="" class="input__label">Category</label>
+                        <input type="text" class="input__value">
+                    </div>
+                    <div class="input_group">
+                        <label for="" class="input__label">Description</label>
+                        <input type="text" class="input__value">
+                    </div>
+                    <div class="input_group">
+                        <label for="" class="input__label">Amount</label>
+                        <input type="number" class="input__value">
+                    </div>
+                    <div class="modal__button">
+                        <button class="btn btn__primary">
+                            Save
+                        </button>
+                        <button class="btn btn__primary">
+                            Save & New
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

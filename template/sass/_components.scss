@@ -1,0 +1,338 @@
+//
+
+.bg-white-radial {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: -5px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    width: 100%;
+    font-size: 1.4rem;
+    border-radius: 2px 2px 0 0;
+    overflow: hidden;
+}
+
+.content-table thead tr {
+    background-color: $color-primary;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid $color-primary;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+///POPUP
+
+.modal {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+        transition: all .3s;
+    }
+
+    &__container {
+        width: 40%;
+        height: 50rem;
+        background: white;
+        box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
+        border-radius: 4px;
+    }
+
+    &__close {
+        text-align: right;
+        margin-right: 2rem;
+        font-size: 3rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .3s;
+
+        & a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    &__content {
+        padding: 1rem 4rem;
+    }
+
+    &__button {
+        text-align: right;
+    }
+
+    &__button>* {
+        margin-left: .2rem;
+    }
+}
+
+.input {
+    &_group {
+        display: block;
+        width: 100%;
+        margin: 2rem 0;
+        font-family: inherit;
+    }
+
+    &__label {
+        font-size: 1.4rem;
+        display: block;
+        font-weight: 600;
+        color: black;
+        font-family: inherit;
+    }
+
+    &__value {
+        width: 100%;
+        padding: 0.5rem;
+        outline: none;
+        font-family: inherit;
+    }
+}
+
+//
+.btn {
+    padding: 1rem 1.5rem;
+    border: none;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: translateY(0);
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &__primary {
+        background-color: $color-primary;
+        color: white;
+
+        &:hover {
+            background-color: $color-primary-dark;
+        }
+
+        &:focus {
+            outline: none;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+////////////////////////////////
+//SEARCH
+.search {
+    display: flex;
+    margin-left: auto;
+
+    &__input {
+        border: none;
+        padding: .7rem 1rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__button {
+        border: none;
+        background-color: white;
+    }
+
+    &__icon {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+}
+
+.user-nav {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+
+    &>* {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &>*:hover {
+        background-color: $color-primary;
+        fill: white;
+    }
+
+    &__icon-box {}
+
+    &__icon {
+        width: 2.3rem;
+        height: 2.3rem;
+    }
+
+    &__user {
+        &-photo {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+        }
+    }
+}
+
+///////////////////////////////////////////////
+
+//BALANCE
+.balance {
+    background-image: $linear-gradient-primary;
+    flex: 0 0 80%;
+    height: 10vh;
+    border-radius: 4px;
+    display: flex;
+    color: white;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__bank {
+        &__title {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        &__amount {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+
+    &__cash {
+        &__title {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        &__amount {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+}
+
+/////////////////////////////
+//TRANSACTION CARDS
+.card {
+    height: 7rem;
+    width: 100%;
+    background-color: white;
+    margin: .8rem 0;
+    padding: 2rem;
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.4rem;
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.1);
+
+    &__icon {
+        font-size: 2.5rem;
+        font-weight: 600;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 1.5rem;
+        color: $color-grey-light;
+        margin-right: 2rem;
+
+        &--plus {
+            background-color: $color-green;
+        }
+
+        &--minus {
+            background-color: $color-red;
+        }
+    }
+
+    &__detail {
+        margin-right: auto;
+
+        &__name {
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+
+    &__amount {
+        font-weight: 600;
+        font-size: 1.6rem;
+        margin-right: 2rem;
+    }
+
+    &__cta {
+        display: flex;
+        cursor: pointer;
+
+        &__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: $color-grey-dark;
+        }
+    }
+}
+
+.reminder__icon {
+    display: flex;
+    justify-items: center;
+    fill: $color-primary;
+}
+
+////////////////////////////////////
+////REPORT SUMMARY
+
+.report-summary {
+    display: flex;
+    font-size: 1.4rem;
+
+    &__label {
+        margin-right: 2rem;
+    }
+}
+
+.color__income {
+    height: 0;
+    width: 2rem;
+    background-color: lawngreen;
+}

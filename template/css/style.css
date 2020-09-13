@@ -1,0 +1,298 @@
+.title-h3 {
+  text-transform: uppercase; }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  background-color: #f5f5f5;
+  font-family: "Montserrat", sans-serif;
+  color: #465881;
+  font-weight: 300;
+  line-height: 1.6; }
+
+.container {
+  padding: 0 10%; }
+
+header {
+  width: 100%;
+  background-color: #fff;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.navigation {
+  margin-left: 30rem; }
+  .navigation__list {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.4rem; }
+  .navigation__link {
+    display: inline-block;
+    list-style: none; }
+    .navigation__link:not(:last-child) {
+      margin-right: 2rem; }
+    .navigation__link a {
+      text-decoration: none;
+      color: #171819; }
+      .navigation__link a:hover {
+        color: #465881;
+        border-bottom: 1px solid #465881;
+        transition: 2s; }
+
+.dashboard {
+  display: flex;
+  margin-top: 2rem;
+  height: 80vh; }
+  .dashboard__left {
+    padding: 0 2rem;
+    flex: 0 0 65%;
+    margin-right: 1rem; }
+  .dashboard__right {
+    flex: 1;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: -5px 8px 20px rgba(0, 0, 0, 0.1); }
+
+.transactions {
+  margin-top: 2rem; }
+
+.bg-white-radial {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: -5px 8px 20px rgba(0, 0, 0, 0.1); }
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  width: 100%;
+  font-size: 1.4rem;
+  border-radius: 2px 2px 0 0;
+  overflow: hidden; }
+
+.content-table thead tr {
+  background-color: #465881;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold; }
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px; }
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd; }
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3; }
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #465881; }
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879; }
+
+.modal {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden; }
+  .modal:target {
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s; }
+  .modal__container {
+    width: 40%;
+    height: 50rem;
+    background: white;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 4px; }
+  .modal__close {
+    text-align: right;
+    margin-right: 2rem;
+    font-size: 3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .3s; }
+    .modal__close a {
+      text-decoration: none;
+      color: black; }
+  .modal__content {
+    padding: 1rem 4rem; }
+  .modal__button {
+    text-align: right; }
+  .modal__button > * {
+    margin-left: .2rem; }
+
+.input_group {
+  display: block;
+  width: 100%;
+  margin: 2rem 0;
+  font-family: inherit; }
+
+.input__label {
+  font-size: 1.4rem;
+  display: block;
+  font-weight: 600;
+  color: black;
+  font-family: inherit; }
+
+.input__value {
+  width: 100%;
+  padding: 0.5rem;
+  outline: none;
+  font-family: inherit; }
+
+.btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transform: translateY(0); }
+  .btn:hover {
+    transform: translateY(-2px); }
+  .btn__primary {
+    background-color: #465881;
+    color: white; }
+    .btn__primary:hover {
+      background-color: #334f90; }
+    .btn__primary:focus {
+      outline: none;
+      transform: translateY(-2px); }
+
+.search {
+  display: flex;
+  margin-left: auto; }
+  .search__input {
+    border: none;
+    padding: .7rem 1rem; }
+    .search__input:focus {
+      outline: none; }
+  .search__button {
+    border: none;
+    background-color: white; }
+  .search__icon {
+    width: 1.7rem;
+    height: 1.7rem; }
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  align-self: stretch; }
+  .user-nav > * {
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center; }
+  .user-nav > *:hover {
+    background-color: #465881;
+    fill: white; }
+  .user-nav__icon {
+    width: 2.3rem;
+    height: 2.3rem; }
+  .user-nav__user-photo {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%; }
+
+.balance {
+  background-image: linear-gradient(to right, #465881, #4f6bac);
+  flex: 0 0 80%;
+  height: 10vh;
+  border-radius: 4px;
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  align-items: center; }
+  .balance__bank__title {
+    font-size: 1rem;
+    font-weight: 300; }
+  .balance__bank__amount {
+    font-size: 2rem;
+    font-weight: 400; }
+  .balance__cash__title {
+    font-size: 1rem;
+    font-weight: 300; }
+  .balance__cash__amount {
+    font-size: 2rem;
+    font-weight: 400; }
+
+.card {
+  height: 7rem;
+  width: 100%;
+  background-color: white;
+  margin: .8rem 0;
+  padding: 2rem;
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.4rem;
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.1); }
+  .card__icon {
+    font-size: 2.5rem;
+    font-weight: 600;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 1.5rem;
+    color: #f5f5f5;
+    margin-right: 2rem; }
+    .card__icon--plus {
+      background-color: #72bc08; }
+    .card__icon--minus {
+      background-color: #eb263a; }
+  .card__detail {
+    margin-right: auto; }
+    .card__detail__name {
+      font-weight: 500;
+      text-transform: uppercase; }
+  .card__amount {
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-right: 2rem; }
+  .card__cta {
+    display: flex;
+    cursor: pointer; }
+    .card__cta__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: #858585; }
+
+.reminder__icon {
+  display: flex;
+  justify-items: center;
+  fill: #465881; }
+
+.report-summary {
+  display: flex;
+  font-size: 1.4rem; }
+  .report-summary__label {
+    margin-right: 2rem; }
+
+.color__income {
+  height: 0;
+  width: 2rem;
+  background-color: lawngreen; }
