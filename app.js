@@ -1,8 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const transactionRoutes = require('./routes/transactionRouters');
-const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const AppError = require('./utils/appError');
 const app = express();
 
 //tambahkan ini ke untuk mengambil data dibody
@@ -28,6 +28,9 @@ app.all('*', (req, res, next) => {
 //jika error operational
 
 app.use(globalErrorHandler);
+
+
+
 
 
 
