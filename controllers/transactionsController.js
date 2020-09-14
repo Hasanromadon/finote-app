@@ -1,7 +1,8 @@
 const Transaction = require('../models/transactionsModel');
 const APIFeatures = require('../utils/apiFeatures');
-const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const catchAsync = require('../utils/catchAsync');
+
 
 //Handler
 
@@ -44,7 +45,7 @@ exports.createTransaction = catchAsync(async (req, res) => {
     const newTransaction = await Transaction.create(req.body);
     res.status(201).json({
 
-        status: 'mantap',
+        status: 'success',
         data: {
             transaction: newTransaction
         }
