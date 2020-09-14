@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const Transaction = require('../models/transactionsModel');
-const APIFeatures = require('../utils/ApiFeatures');
+const APIFeatures = require('../utils/apiFeatures');
 const {
     json
 } = require('express');
