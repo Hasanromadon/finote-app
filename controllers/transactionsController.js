@@ -1,9 +1,6 @@
-/* eslint-disable prettier/prettier */
 const Transaction = require('../models/transactionsModel');
 const APIFeatures = require('../utils/apiFeatures');
-const {
-    json
-} = require('express');
+const catchAsync = require('../utils/catchAsync');
 //Handler
 
 exports.aliasTopExpenses = async (req, res, next) => {
@@ -13,65 +10,40 @@ exports.aliasTopExpenses = async (req, res, next) => {
 }
 
 
-exports.getAllTransactions = async (req, res) => {
-    try {
+exports.getAllTransactions = catchAsync(async (req, res) => {
 
-        //Execute Query
-        const features = new APIFeatures(Transaction.find(), req.query).filter().sort().limitFields().paginate();
-        const transaction = await features.query;
+    //Execute Query
+    const features = new APIFeatures(Transaction.find(), req.query).filter().sort().limitFields().paginate();
+    const transaction = await features.query;
 
-        res.status(200).json({
-            status: 'success',
-            result: transaction.length,
-            data: transaction
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        })
-    }
+    res.status(200).json({
+        status: 'success',
+        result: transaction.length,
+        data: transaction
+    });
 
-};
-exports.getTransaction = async (req, res) => {
-    try {
-
-        const id = req.params.id;
-        const transaction = await Transaction.findById(id);
-        res.status(200).json({
-            status: 'success',
-            data: transaction
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        })
-    }
+});
+exports.getTransaction = catchAsync(async (req, res) => {
+    const id = req.params.id;
+    const transaction = await Transaction.findById(id);
+    res.status(200).json({
+        status: 'success',
+        data: transaction
+    });
 
 
-};
+});
 
-exports.createTransaction = async (req, res) => {
-    try {
+exports.createTransaction = catchAsync(async (req, res) => {
+    const newTransaction = await Transaction.create(req.body);
+    res.status(201).json({
 
-        const newTransaction = await Transaction.create(req.body);
-        res.status(201).json({
-
-            status: 'mantap',
-            data: {
-                transaction: newTransaction
-            }
-        });
-
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        })
-    }
-
-};
+        status: 'mantap',
+        data: {
+            transaction: newTransaction
+        }
+    });
+});
 
 exports.deleteTrasaction = async (req, res) => {
 
@@ -88,63 +60,40 @@ exports.deleteTrasaction = async (req, res) => {
             message: err
         })
     }
-
-
-
-
 };
 
 
-exports.updateTransaction = async (req, res) => {
+exports.updateTransaction = catchAsync(async (req, res) => {
+    const transaction = await Transaction.findByIdAndUpdate(req.params.id, req.body, {
+        new: true, //return new data
+        runValidators: true
+    });
 
-    try {
+    res.status(201).json({
+        status: 'success',
+        data: transaction
+    });
+});
 
-        const transaction = await Transaction.findByIdAndUpdate(req.params.id, req.body, {
-            new: true, //return new data
-            runValidators: true
-        });
+exports.getTransactionStats = catchAsync(async (req, res) => {
 
-        res.status(201).json({
-            status: 'success',
-            data: transaction
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        })
-    }
+    const stats = await Transaction.aggregate([{
 
-};
-
-exports.getTransactionStats = async (req, res) => {
-
-    try {
-        const stats = await Transaction.aggregate([{
-
-            $match: {
-                amount: {
-                    $gt: 0
-                }
-            },
-            $group: {
-                _id: '$category',
-                total: {
-                    $sum: '$amount'
-                }
+        $match: {
+            amount: {
+                $gt: 0
             }
-        }]);
+        },
+        $group: {
+            _id: '$category',
+            total: {
+                $sum: '$amount'
+            }
+        }
+    }]);
 
-        res.status(200).json({
-            status: 'success',
-            data: stats
-        });
-
-    } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err
-        })
-
-    }
-}
+    res.status(200).json({
+        status: 'success',
+        data: stats
+    });
+});
