@@ -6,7 +6,8 @@
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
     "devserver": "live-server --browser=chrome",
-    "start": "nodemon server.js",
+    "start:dev": "nodemon server.js",
+    "start:prod": "SET NODE_ENV=develompent & nodemon server.js",
     "debug": "ndb server.js"
   },
   "author": "hasan",

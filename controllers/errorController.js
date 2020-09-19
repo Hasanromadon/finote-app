@@ -1,13 +1,68 @@
+const AppError = require('../utils/appError');
+
+//transport weird mongo db error inti frendly message
+const handleCastErrorDB = (err) => {
+  const message = `Invalid ${err.path} : ${err.value}`;
+  return new AppError(message, 400);
+};
+
+const handledulicateFieldsDB = (err) => {
+  const value = err.errmsg.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
+  const message = `Duplicate field value :  ${value} please use another value!`;
+  return new AppError(message, 400);
+};
+
+//PRODUCTION SIMPLE ERROR FOR CLIENT
+//DEVELOPMENT GET ERROR AS MUCH AS CAN
+
+const sendErrorDev = (err, res) => {
+  res.status(err.statusCode).json({
+    status: err.status,
+    error: err,
+    message: err.message,
+    stack: err.stack,
+  });
+};
+
+const sendErrorProd = (err, res) => {
+  //kalo tidak ada masalah di program jalankan ini
+  if (res.isOperational) {
+    res.status(err.statusCode).json({
+      status: err.status,
+      message: err.message,
+    });
+  }
+  //ada masalah di program atau unknown jalankan ini agar tidak diketahui code yang error
+  else {
+    //Send console error
+    console.error('ERROR');
+
+    //send generic message
+    res.status(500).json({
+      status: 'error',
+      message: 'Something went Error!',
+    });
+  }
+};
+
 // dengan mendeclarasikan err, req, express tau kalo ini untuk handle error
 module.exports = (err, req, res, next) => {
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 'error';
 
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || 'Error';
+  if (process.env.NODE_ENV === 'development') {
+    sendErrorDev(err, res);
+  } else if (process.env.NODE_ENV) {
+    //reasign new error
+    let error = {
+      ...err,
+    };
 
-    res.status(err.statusCode).json({
-        status: err.status,
-        message: err.message
-    })
+    if (error.name === 'CastError') {
+      error = handleCastErrorDB(error);
+    }
+    if (error.code === 11000) error = handledulicateFieldsDB(error);
 
-
-}
+    sendErrorProd(error, res);
+  }
+};
