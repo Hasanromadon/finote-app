@@ -12,6 +12,13 @@ const handledulicateFieldsDB = (err) => {
   return new AppError(message, 400);
 };
 
+const handlevalidationErrorDB = (err) => {
+  const errors = Object.values(err.errors).map((el) => el.massage);
+
+  const message = `Invalid input data ${errors.join('. ')}`;
+  return new AppError(message, 400);
+};
+
 //PRODUCTION SIMPLE ERROR FOR CLIENT
 //DEVELOPMENT GET ERROR AS MUCH AS CAN
 
@@ -62,6 +69,8 @@ module.exports = (err, req, res, next) => {
       error = handleCastErrorDB(error);
     }
     if (error.code === 11000) error = handledulicateFieldsDB(error);
+    if (error.name === 'ValidationError')
+      error = handlevalidationErrorDB(error);
 
     sendErrorProd(error, res);
   }
