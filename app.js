@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const transactionRoutes = require('./routes/transactionRouters');
+const userRouters = require('./routes/userRouters');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const app = express();
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 
 
 app.use('/api/v1/finote/', transactionRoutes);
+app.use('/api/v1/users/', userRouters);
 
 //jika tidak ada url
 
