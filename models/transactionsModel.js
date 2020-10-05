@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./usersModel');
 
 const transactionsSchema = new mongoose.Schema({
     name: {
@@ -15,8 +16,8 @@ const transactionsSchema = new mongoose.Schema({
         type: String,
         required: [true, 'transaction must have category'],
         enum: {
-            values: ['investing', 'operatng', 'financing'],
-            message: 'category is either : investing, operatng, financing'
+            values: ['investing', 'operating', 'financing'],
+            message: 'category is either : investing, operating, financing'
         }
     },
     amount: {
@@ -25,9 +26,24 @@ const transactionsSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        default: Date.now()
+        default: Date.now
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'Transaction must belong to a user']
     }
+
 });
+
+// transactionsSchema.pre(/^find/, function (next) {
+//     this.populate({
+//         path: 'user',
+//         select: 'name'
+//     })
+
+//     next();
+// })
 
 const Transaction = mongoose.model('Transaction', transactionsSchema);
 

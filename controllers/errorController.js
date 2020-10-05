@@ -19,6 +19,11 @@ const handlevalidationErrorDB = (err) => {
   return new AppError(message, 400);
 };
 
+//handle JWT ERROR
+const handleJWTError = err => new AppError('Invalid token, please login again!', 401);
+
+
+
 //PRODUCTION SIMPLE ERROR FOR CLIENT
 //DEVELOPMENT GET ERROR AS MUCH AS CAN
 
@@ -59,19 +64,17 @@ module.exports = (err, req, res, next) => {
 
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, res);
-  } else if (process.env.NODE_ENV) {
+  } else if (process.env.NODE_ENV === 'production') {
     //reasign new error
     let error = {
-      ...err,
+      ...err
     };
 
-    if (error.name === 'CastError') {
-      error = handleCastErrorDB(error);
-    }
+    if (error.name === 'CastError') error = handleCastErrorDB(error);
     if (error.code === 11000) error = handledulicateFieldsDB(error);
-    if (error.name === 'ValidationError')
-      error = handlevalidationErrorDB(error);
-
+    if (error.name === 'ValidationError') error = handlevalidationErrorDB(error);
+    if (error.name === 'JsonWebTokenError') error = handleJWTError(error);
+    console.log(error);
     sendErrorProd(error, res);
   }
 };
